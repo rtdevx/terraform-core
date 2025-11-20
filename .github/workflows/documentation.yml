@@ -16,8 +16,8 @@ jobs:
       matrix:
         #dir: ["module-a", "module-b", "modules/module-c"]
         dir: [
-          "a1-s3-backend",
-          "a1-codepipeline"
+          "aws-backends",
+          "aws-codepipelines"
           ]
     steps:
       - uses: actions/checkout@v3
