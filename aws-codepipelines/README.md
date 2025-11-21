@@ -2,7 +2,7 @@
 
 ## 1. Create IAM roles
 
-Create IAM policies and roles, assume roles for CodePipeline and CodeBuild.
+Create IAM policies and roles, assume roles required for CodePipeline and CodeBuild.
 
 ## 2. Create S3 Bucket
 
