@@ -1,5 +1,5 @@
 resource "aws_iam_role" "codepipeline_role" {
-  name = "CodePipelineRole"
+  name = "tf-core-CodePipelineRole"
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [{
@@ -13,7 +13,7 @@ resource "aws_iam_role" "codepipeline_role" {
 }
 
 resource "aws_iam_role_policy" "codepipeline_policy" {
-  name = "CodePipelinePolicy"
+  name = "tf-core-CodePipelinePolicy"
   role = aws_iam_role.codepipeline_role.name
   policy = jsonencode({
     Version = "2012-10-17"
@@ -26,7 +26,7 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
 }
 
 resource "aws_iam_role" "codebuild_role" {
-  name = "CodeBuildRole"
+  name = "tf-core-CodeBuildRole"
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [{
@@ -40,7 +40,7 @@ resource "aws_iam_role" "codebuild_role" {
 }
 
 resource "aws_iam_role_policy" "codebuild_policy" {
-  name = "CodeBuildPolicy"
+  name = "tf-core-CodeBuildPolicy"
   role = aws_iam_role.codebuild_role.name
   policy = jsonencode({
     Version = "2012-10-17"
