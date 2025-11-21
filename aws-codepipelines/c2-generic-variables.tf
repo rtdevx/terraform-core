@@ -19,8 +19,8 @@ variable "codepipeline_bucket_name_prefix" {
   type        = string
 }
 
-variable "codepipeline_github_repository" {
-  description = "CodePipeline GitHub repository"
+variable "codepipeline_github_repository_cp1" {
+  description = "CodePipeline GitHub repository - CodePipeline 1"
   type        = string
 }
 
