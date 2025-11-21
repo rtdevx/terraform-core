@@ -13,7 +13,7 @@ terraform {
   # INFO: S3 Backend Block
   backend "s3" {
     bucket = "rk-backend"
-    key    = "prod/a1-s3-backend/terraform.tfstate"
+    key    = "terraform-core/aws-backends/terraform.tfstate"
     region = "eu-west-2"
     //dynamodb_table = "prod-a1s3backend-lock" # NOTE: Uncomment to enable state locking with DynamoDB. Table must be created in `c1-dynamodb-lock.tf`.
     encrypt = true
