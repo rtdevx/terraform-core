@@ -12,7 +12,16 @@ Below values (s3 bucket) will be served as a backend for .tfstate file for any f
 
 ## Terraform Backend
 
+### Naming convention for terraform backends
+
 Enabling S3 backend for Terraform remote state:
+
+```shell
+    bucket = "backend-bucket-name"
+    key    = "github-repository/your-folder/terraform.tfstate"
+```
+
+### Example:
 
 _File:_ `MY_PROJECT/c1-versions.tf`
 
@@ -20,30 +29,30 @@ _File:_ `MY_PROJECT/c1-versions.tf`
 # INFO: Terraform Block
 # INFO: https://registry.terraform.io/providers/hashicorp/aws/latest/docs#example-usage
 
+# INFO: Provider Block
+provider "aws" {
+  region  = var.aws_region
+  profile = "default" # NOTE: AWS Credentials Profile (profile = "default") configured on your local desktop terminal ($HOME/.aws/credentials)
+}
+
 terraform {
-  required_version = "~> 1.13.0"
+  required_version = "~> 1.14.0" # NOTE: Greater than 1.14.0. Only the most upright version number (.0) can change.
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 6.0"
+      version = "~> 6.0" # NOTE: Greater than 6.0. Only the most upright version number (.0) can change.
     }
   }
 
   # INFO: S3 Backend Block
   backend "s3" {
     bucket = "rk-backend"
-    key    = "prod/a1-s3-backend/terraform.tfstate"
+    key    = "terraform-core/aws-codepipelines/terraform.tfstate"
     region = "eu-west-2"
     //dynamodb_table = "prod-a1s3backend-lock" # NOTE: Uncomment to enable state locking with DynamoDB. Table must be created in `c1-dynamodb-lock.tf`.
     encrypt = true
   }
 
-}
-
-# INFO: Provider Block
-provider "aws" {
-  region  = var.aws_region
-  profile = "default"
 }
 ```
 ### ℹ️ If required, terraform backend can be reinitialized with `terraform init --migrate-state` command.
